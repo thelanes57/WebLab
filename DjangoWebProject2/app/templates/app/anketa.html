@@ -1,0 +1,72 @@
+{% extends "app/layout.html" %}
+{% block content %}
+
+{% if form != None %}
+<br><h2>Отправьте пожалуйста заполненную анкету</h2>
+<hr/>
+<div >
+    <form method="post">
+        {% csrf_token %}
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+        {{ form.name }}<br><br>
+        <label for="{{ form.city.id_for_label }}">{{ form.city.label }}:</label>
+        {{ form.city }}<br>
+        <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}:</label>
+        {{ form.gender }}
+        <label for="{{ form.rang.id_for_label }}">{{ form.rang.label }}:</label><br>
+        {{ form.rang }}<br><br>
+        <label for="{{ form.notice.id_for_label }}">{{ form.notice.label }}:</label>
+        {{ form.notice }}<br><br>
+        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
+        {{ form.email }}<br><br>
+        <label for="{{ form.message.id_for_label }}">{{ form.message.label }}:</label><br>
+        {{ form.message }}<br><br>
+        <input type="submit" value="Отправить" class="btn btn-default" id="send_btn">
+    </form>
+</div>
+
+{% else %}
+<br><h2>Благодарим за ваш отзыв!</h2>
+<h3>Вы сообщили следующее:</h3>
+<ul id="p1">
+    <li><span>Имя:</span>{{ data.name }}</li>
+    <li><span>Город:</span>{{ data.city }}</li>
+    <li><span>Пол:</span>{{ data.gender }}</li>
+    <li><span>Ваша оценка:</span>{{ data.rang }}</li>
+    <li><span>Получать новости сайта на e-mail:</span>
+            {{ data.notice }}</li>
+    <li><span>Ваш e-mail:</span>{{ data.email }}</li>
+    <li><span>Ваш комментарий:</span>{{ data.message }}</li>
+</ul>
+{% endif %}
+
+<script>
+
+    window.addEventListener("load", function () {
+        $("#send_btn").mouseenter(function () {
+            $("#send_btn").css('background', 'thistle');
+        });
+
+        $("#send_btn").mouseleave(function () {
+            $("#send_btn").css('background', 'White');
+        });
+        
+        $("#id_name").mouseenter(function () {
+            $("#id_name").css('background', 'oldlace');
+        });
+
+        $("#id_name").mouseleave(function () {
+            $("#id_name").css('background', 'White');
+        });
+
+        $("#id_message").mouseenter(function () {
+            $("#id_message").css('background', 'lavender');
+        });
+
+        $("#id_message").mouseleave(function () {
+            $("#id_message").css('background', 'White');
+        });
+    });
+</script>
+
+{% endblock %}

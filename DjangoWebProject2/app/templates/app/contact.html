@@ -1,0 +1,21 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<br>
+<h2>{{ title }}</h2>
+<hr/>
+<h3>{{ message }}</h3>
+
+<address id="p1">
+    "Не Земля"<br />
+    Лунная станция 9, Блок: СВ-3<br />
+    <abbr title="Телефон">Т:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Техническая поддкржка:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Отдел маркетинга:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+{% endblock %}
